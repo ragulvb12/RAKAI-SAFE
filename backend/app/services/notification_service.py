@@ -110,7 +110,7 @@ class NotificationService:
                     twilio_status = res_json.get("status", "sent").lower()
                     if twilio_status in ("sent", "delivered"):
                         status = NotificationStatus.DELIVERED
-                    elif twilio_status in ("queued", "sending"):
+                    elif twilio_status in ("queued", "sending", "accepted", "scheduled"):
                         status = NotificationStatus.SENT
                     else:
                         status = NotificationStatus.FAILED
