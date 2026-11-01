@@ -25,7 +25,9 @@ target_metadata = Base.metadata
 def get_normalized_url() -> str:
     url = settings.DATABASE_URL
     if url.startswith("postgres://"):
-        url = url.replace("postgres://", "postgresql://", 1)
+        url = url.replace("postgres://", "postgresql+psycopg2://", 1)
+    elif url.startswith("postgresql://"):
+        url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
     return url
 
 def run_migrations_offline() -> None:
