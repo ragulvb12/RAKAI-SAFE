@@ -57,6 +57,26 @@ export const EmergencyDisableBar: React.FC = () => {
             <span>{isSirenPlaying ? 'Mute Siren' : 'Sound Siren'}</span>
           </button>
 
+          {/* Direct SMS via SIM Button */}
+          <a
+            href={`sms:+916380173079?body=${encodeURIComponent(`🚨 SOS EMERGENCY ALERT!\n\nI need help immediately. Please contact me and take action.\n\nMy live location:\nhttps://www.google.com/maps?q=${activeIncident?.current_latitude || 13.0827},${activeIncident?.current_longitude || 80.2707}\n\nPlease call me immediately.`)}`}
+            className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-xs font-bold text-white shadow transition-colors"
+            title="Send SMS via your phone SIM card"
+          >
+            <span>📱 Send SMS via SIM</span>
+          </a>
+
+          {/* Direct WhatsApp SOS Button */}
+          <a
+            href={`https://wa.me/916380173079?text=${encodeURIComponent(`🚨 SOS EMERGENCY ALERT!\n\nI need help immediately. Please contact me and take action.\n\nMy live location:\nhttps://www.google.com/maps?q=${activeIncident?.current_latitude || 13.0827},${activeIncident?.current_longitude || 80.2707}\n\nPlease call me immediately.`)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-xs font-bold text-white shadow transition-colors"
+            title="Send SOS alert via WhatsApp"
+          >
+            <span>💬 WhatsApp SOS</span>
+          </a>
+
           {/* Direct Emergency Call Button */}
           <a
             href="tel:112"

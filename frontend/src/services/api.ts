@@ -12,8 +12,9 @@ import {
   IncidentStatus
 } from '../types';
 
-const apiBaseUrl = import.meta.env.VITE_API_URL 
-  ? `${String(import.meta.env.VITE_API_URL).replace(/\/+$/, '')}/api/v1` 
+const metaEnv = (import.meta as any)?.env || {};
+const apiBaseUrl = metaEnv.VITE_API_URL 
+  ? `${String(metaEnv.VITE_API_URL).replace(/\/+$/, '')}/api/v1` 
   : '/api/v1';
 
 const api = axios.create({
